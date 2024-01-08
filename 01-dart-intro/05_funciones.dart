@@ -6,6 +6,8 @@ void main() {
 
   print( addTwoNumbersOptional( 14 ) );
 
+  print( greetPerson(name: 'Jorge', message: 'Bienvenido!') );
+
 }
 
 String greetEveryone() {
@@ -24,4 +26,9 @@ int addTwoNumbersOptional( int a, [ int b = 0]) {
 
   // b = b ?? 0;
   return a + b;
+}
+
+String greetPerson( { required String name, String message = 'Hola,'} ){
+
+  return '$message $name';
 }
