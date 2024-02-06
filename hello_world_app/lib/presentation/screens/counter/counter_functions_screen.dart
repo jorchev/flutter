@@ -39,45 +39,61 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
 
-            FloatingActionButton(
-              shape: const StadiumBorder(),
-              onPressed: () {
-                clickCounter++;
+            CustomButton(
+              icon: Icons.refresh_outlined,
+              onPressed: (){
                 setState(() {
-                  
+                  clickCounter = 0;
                 });
               },
-              child: const Icon( Icons.refresh_outlined ),
             ),
 
             const SizedBox( height: 10 ),
             
-            FloatingActionButton(
-              shape: const StadiumBorder(),
-              onPressed: () {
+            CustomButton(
+              icon: Icons.plus_one,
+              onPressed: (){
                 clickCounter++;
-                setState(() {
-                  
-                });
+                setState(() {});
               },
-              child: const Icon( Icons.plus_one ),
             ),
 
             const SizedBox( height: 10 ),
             
-            FloatingActionButton(
-              shape: const StadiumBorder(),
-              onPressed: () {
+            CustomButton( 
+              icon: Icons.exposure_minus_1_outlined,
+              onPressed: (){
+                if( clickCounter == 0 ) return;
                 clickCounter--;
-                setState(() {
-                  
-                });
-              },
-              child: const Icon( Icons.exposure_minus_1_outlined ),
+                setState(() {});
+              },              
             ),
           
           ],
         )
       );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+
+  final IconData icon;
+  final VoidCallback? onPressed;
+
+  const CustomButton({
+    super.key, 
+    required this.icon,
+    this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      // shape: const StadiumBorder(),
+      enableFeedback: true,
+      elevation: 5,
+      onPressed: onPressed,
+      child: Icon( icon ),
+    );
   }
 }
