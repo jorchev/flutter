@@ -34,17 +34,20 @@ class _ChatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final chatProvider = context.watch<ChatProvider>();
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: [
 
-            Expanded(child: ListView.builder(
-              itemCount: chatProvider.messageList.length,
-              itemBuilder: (context, index) {
-              final message = chatProvider.messageList[index];
-              return message.fromWho == FromWho.hers ? const HerMessageBubble() : MyMessageBubble( message: message, );
+            Expanded(
+              child: ListView.builder(
+                controller: chatProvider.chatScrollController,
+                itemCount: chatProvider.messageList.length,
+                itemBuilder: (context, index) {
+                final message = chatProvider.messageList[index];
+                return message.fromWho == FromWho.hers ? const HerMessageBubble() : MyMessageBubble( message: message, );
             })),
 
             // Caja de texto de mensajes
