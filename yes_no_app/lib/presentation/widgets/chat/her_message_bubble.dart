@@ -26,7 +26,7 @@ class HerMessageBubble extends StatelessWidget { // snippet statelessW
           ),
         ),
         const SizedBox(height: 5,),
-        _ImageBubble(message: message,),
+        _ImageBubble( message.imageUrl! ),
         const SizedBox(height: 10,)
       ],
     );
@@ -35,9 +35,9 @@ class HerMessageBubble extends StatelessWidget { // snippet statelessW
 
 class _ImageBubble extends StatelessWidget {
 
-  final Message message;
+  final String imageUrl;
 
-  const _ImageBubble({required this.message});
+  const _ImageBubble( this.imageUrl );
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class _ImageBubble extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Image.network(
-      message.imageUrl!,
+      imageUrl,
       width: size.width * 0.7,
       height: 150,
       fit: BoxFit.cover,
