@@ -5,7 +5,7 @@ class MyMessageBubble extends StatelessWidget { // snippet statelessW
   
   final Message message;
   
-  MyMessageBubble({super.key, required this.message});
+  const MyMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
